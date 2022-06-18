@@ -5,6 +5,7 @@ import PreNavbar from "./components/prenavbar/prenavbar.component";
 import Navbar from "./components/navbar/navbar.component";
 import Slider from "./components/slider/slider.component";
 import Offers from "./components/offers/offers.component";
+import Heading from "./components/Heading/heading.componnet";
 
 import data from "./data/data.json";
 
@@ -15,6 +16,7 @@ function App() {
       <Navbar />
       <Slider start={data.banner.start} />
       <Offers offers={data.offer} />
+      <Heading text={"Star Products"} />
     </div>
   );
 }
