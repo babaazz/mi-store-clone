@@ -5,7 +5,7 @@ const Heading = ({ text }) => {
   return (
     <HeadingContainer>
       <Line />
-      <p>{text}</p>
+      <p>{text.toUpperCase()}</p>
       <Line />
     </HeadingContainer>
   );
