@@ -3,7 +3,6 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 import { HotMenuContainer, HotLink } from "./hot-menu.styles";
-import "./hot-menu.styles.css";
 
 const HotMenu = () => {
   const paths = [
@@ -16,8 +15,13 @@ const HotMenu = () => {
   const initialHoverState = [true, false, false, false, false];
   const [hoverState, setHoverState] = useState(initialHoverState);
   const Navigate = useNavigate();
-  const hoverHandler = (path, index) => {
+  const hoverHandler = (index) => {
     setHoverState(hoverState.map((_, idx) => (idx === index ? true : false)));
+  };
+  const hoverStyle = {
+    textDecoration: "none",
+    color: "orangered",
+    borderBottom: "1px solid orangered",
   };
   return (
     <>
@@ -26,11 +30,11 @@ const HotMenu = () => {
           <HotLink
             to={item.path}
             onMouseEnter={() => {
-              hoverHandler(item.path, index);
+              hoverHandler(index);
               Navigate(item.path);
             }}
             key={index}
-            className={`${hoverState[index] ? "current" : ""}`}
+            style={hoverState[index] ? hoverStyle : {}}
           >
             {item.name}
           </HotLink>
