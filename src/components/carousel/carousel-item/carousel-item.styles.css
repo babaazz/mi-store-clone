@@ -1,0 +1,47 @@
+.carousel-item {
+  grid-area: 1/2;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.carousel-item .caption {
+  margin-top: 9rem;
+  grid-area: 1/2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgb(255, 255, 255);
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
+.carousel-item .caption.fade {
+  opacity: 1;
+}
+.caption h2 {
+  font-size: 2.5rem;
+  margin: 0rem;
+}
+
+.caption h3 {
+  font-size: 1.5rem;
+  margin: 0rem;
+}
+
+.caption p {
+  font-size: 1.5rem;
+}
+
+.carousel-item img {
+  grid-area: 1/2;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
+
+.carousel-item img.fade {
+  opacity: 1;
+}

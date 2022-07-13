@@ -1,11 +1,9 @@
-import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 
 import { Routes, Route } from "react-router-dom";
 
 import PreNavbar from "./components/prenavbar/prenavbar.component";
 import Navbar from "./components/navbar/navbar.component";
-import Slider from "./components/slider/slider.component";
 import Offers from "./components/offers/offers.component";
 import Heading from "./components/Heading/heading.componnet";
 import StarProducts from "./components/star-products/star-products.component";
@@ -13,6 +11,8 @@ import HotMenu from "./components/hot-menu/hot-menu.component";
 import HotAccessories from "./components/hot-accessories/hot-accessories.component";
 import ProductReviews from "./components/product-reviews/product-reviews.component";
 import Videos from "./components/videos/videos.component";
+import Carousel from "./components/carousel/carousel.component";
+import Footer from "./components/footer/footer.component";
 
 import data from "./data/data.json";
 
@@ -21,7 +21,12 @@ function App() {
     <div className="App">
       <PreNavbar />
       <Navbar />
-      <Slider start={data.banner.start} />
+      <Carousel
+        slides={data.banner.start.map((img) => ({ image: img, caption: {} }))}
+        interval={5000}
+        rightArrow={"ᐳ"}
+        leftArrow={"ᐸ"}
+      />
       <Offers offers={data.offer} />
       <Heading text={"Star Products"} />
       <StarProducts starProducts={data.starProduct} />
@@ -93,6 +98,21 @@ function App() {
       <ProductReviews productReviews={data.productReviews} />
       <Heading text={"Videos"} />
       <Videos videos={data.videos} />
+      <Heading text={"In The Press"} />
+      <Carousel
+        slides={data.banner.end.map((item) => ({
+          image: item.image,
+          caption: {
+            title: item.name,
+            source: item.source,
+            description: item.description,
+          },
+        }))}
+        interval={5000}
+        rightArrow={"ᐳ"}
+        leftArrow={"ᐸ"}
+      />
+      <Footer footer={data.footer} />
     </div>
   );
 }
