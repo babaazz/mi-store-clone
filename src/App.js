@@ -13,6 +13,9 @@ import ProductReviews from "./components/product-reviews/product-reviews.compone
 import Videos from "./components/videos/videos.component";
 import Carousel from "./components/carousel/carousel.component";
 import Footer from "./components/footer/footer.component";
+import NavOptions from "./components/nav-options/nav-options.component";
+
+import NavHoverProvider from "./context/nav-hover-context/nav-hover.context";
 
 import data from "./data/data.json";
 
@@ -20,7 +23,10 @@ function App() {
   return (
     <div className="App">
       <PreNavbar />
-      <Navbar />
+      <NavHoverProvider>
+        <Navbar />
+        <NavOptions data={data} />
+      </NavHoverProvider>
       <Carousel
         slides={data.banner.start.map((img) => ({ image: img, caption: {} }))}
         interval={5000}

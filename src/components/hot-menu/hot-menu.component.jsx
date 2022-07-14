@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 import { HotMenuContainer, HotLink } from "./hot-menu.styles";
@@ -24,24 +24,21 @@ const HotMenu = () => {
     borderBottom: "1px solid orangered",
   };
   return (
-    <>
-      <HotMenuContainer>
-        {paths.map((item, index) => (
-          <HotLink
-            to={item.path}
-            onMouseEnter={() => {
-              hoverHandler(index);
-              Navigate(item.path);
-            }}
-            key={index}
-            style={hoverState[index] ? hoverStyle : {}}
-          >
-            {item.name}
-          </HotLink>
-        ))}
-      </HotMenuContainer>
-      <Outlet />
-    </>
+    <HotMenuContainer>
+      {paths.map((item, index) => (
+        <HotLink
+          to={item.path}
+          onMouseEnter={() => {
+            hoverHandler(index);
+            Navigate(item.path);
+          }}
+          key={index}
+          style={hoverState[index] ? hoverStyle : {}}
+        >
+          {item.name}
+        </HotLink>
+      ))}
+    </HotMenuContainer>
   );
 };
 
